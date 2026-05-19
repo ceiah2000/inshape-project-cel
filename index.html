@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#080810">
-<title>InShape</title>
+<title>InShape — Evolve</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -576,6 +576,104 @@ select option { background: var(--s2); }
 .toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 hr { border: none; border-top: .5px solid var(--bdr); margin: .8rem 0; }
+/* ══ NOUVELLES FEATURES ══ */
+
+/* Conseil nutrition contextuel */
+.nutri-ctx {
+  background: linear-gradient(135deg, rgba(61,232,138,.08) 0%, rgba(200,245,58,.05) 100%);
+  border: .5px solid rgba(61,232,138,.2);
+  border-radius: var(--r); padding: 1rem 1.15rem; margin-bottom: .9rem;
+}
+.nutri-ctx-title {
+  font-family: var(--font-d); font-size: 12px; font-weight: 800;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--gr);
+  margin-bottom: .6rem; display: flex; align-items: center; gap: 6px;
+}
+.nutri-ctx-item {
+  font-size: 13px; color: var(--txt2); padding: 5px 0;
+  border-bottom: .5px solid rgba(61,232,138,.08); line-height: 1.4;
+}
+.nutri-ctx-item:last-child { border-bottom: none; }
+.nutri-ctx-item strong { color: var(--lime); font-weight: 700; }
+
+/* Bilan semaine */
+.bilan-card {
+  background: var(--s1); border: .5px solid rgba(200,245,58,.15);
+  border-radius: var(--r); padding: 1.1rem 1.15rem; margin-bottom: .9rem;
+}
+.bilan-title {
+  font-family: var(--font-d); font-size: 16px; font-weight: 800;
+  letter-spacing: -.3px; margin-bottom: .2rem;
+}
+.bilan-subtitle { font-size: 12px; color: var(--mu); margin-bottom: 1rem; }
+.bilan-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; border-bottom: .5px solid var(--bdr); font-size: 14px;
+}
+.bilan-row:last-child { border-bottom: none; }
+.bilan-label { color: var(--mu); font-size: 13px; }
+.bilan-val { font-family: var(--font-d); font-weight: 800; font-size: 15px; }
+.bilan-msg {
+  background: rgba(200,245,58,.06); border-radius: var(--rs);
+  padding: .75rem 1rem; margin-top: .75rem;
+  font-size: 13px; color: var(--txt2); line-height: 1.5;
+  border-left: 2px solid var(--lime);
+}
+
+/* Stats progression long terme */
+.prog-stats {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 8px;
+  margin-bottom: .85rem;
+}
+.pst {
+  background: var(--s2); border: .5px solid var(--bdr);
+  border-radius: var(--rs); padding: .75rem .6rem; text-align: center;
+}
+.pst-val {
+  font-family: var(--font-d); font-size: 20px; font-weight: 800;
+  letter-spacing: -1px; line-height: 1;
+}
+.pst-lbl { font-size: 10px; color: var(--mu); margin-top: 3px; font-weight: 500; }
+
+/* Objectif poids */
+.obj-bar-wrap { margin: .75rem 0; }
+.obj-bar-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--mu); margin-bottom: 5px; font-weight: 600; }
+.obj-bar-track { height: 8px; border-radius: 4px; background: var(--s3); overflow: hidden; position: relative; }
+.obj-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--gr), var(--lime)); transition: width .6s cubic-bezier(.4,0,.2,1); }
+.obj-bar-marker { position: absolute; top: -3px; width: 14px; height: 14px; border-radius: 50%; background: var(--lime); border: 2px solid var(--bg); transform: translateX(-50%); transition: left .6s; }
+
+/* Sous-onglets Moi */
+.moi-tabs { display: flex; gap: 6px; margin-bottom: .9rem; }
+.moi-tab {
+  flex: 1; padding: 9px 8px; border-radius: var(--rs);
+  border: .5px solid var(--bdr2); background: var(--s2);
+  color: var(--mu); font-size: 12px; font-weight: 700;
+  cursor: pointer; text-align: center; touch-action: manipulation;
+  transition: all .15s; font-family: var(--font-b);
+  letter-spacing: .02em;
+}
+.moi-tab.on {
+  background: rgba(200,245,58,.1); border-color: rgba(200,245,58,.3);
+  color: var(--lime);
+}
+.moi-section { display: none; }
+.moi-section.on { display: block; }
+
+/* Export/import */
+.export-btn {
+  width: 100%; padding: 12px; border-radius: var(--rs);
+  background: var(--bl-d); border: .5px solid rgba(90,184,255,.2);
+  color: var(--bl); font-family: var(--font-d); font-size: 14px; font-weight: 700;
+  cursor: pointer; touch-action: manipulation; transition: all .15s; margin-bottom: .5rem;
+}
+.export-btn:active { background: rgba(90,184,255,.15); }
+
+/* Suggestion intelligente indicator */
+.hero-why {
+  font-size: 11px; color: var(--mu); margin-top: 4px;
+  font-style: italic; position: relative;
+}
+
 </style>
 </head>
 <body>
@@ -666,6 +764,9 @@ hr { border: none; border-top: .5px solid var(--bdr); margin: .8rem 0; }
     </div>
 
     <div class="motiv"><div class="motiv-q" id="motiv-txt"></div><div class="motiv-s">Rappel du jour</div></div>
+    <div id="bilan-today-section"></div>
+
+    <div id="nutri-ctx-section"></div>
 
     <div class="slbl">Bases quotidiennes</div>
     <div class="tip tip-pu">🥩 Protéines : ~100 g/j — œufs, poulet, yaourt grec, légumineuses</div>
@@ -836,43 +937,84 @@ hr { border: none; border-top: .5px solid var(--bdr); margin: .8rem 0; }
 
   <!-- ══ MOI ══ -->
   <div class="pg" id="pg-moi">
-    <div class="slbl">Suivi poids</div>
-    <div class="card">
-      <div class="irow">
-        <div style="flex:1"><div class="ilbl">Kg</div><input type="number" id="w-in" step="0.1" min="40" max="200" placeholder="ex : 95.5"></div>
-        <div style="flex:1"><div class="ilbl">Date</div><input type="date" id="w-date"></div>
-        <button class="btn btn-lime" onclick="addWeight()" style="flex-shrink:0;align-self:flex-end">+</button>
-      </div>
-      <div class="chart-wrap"><canvas id="w-chart"></canvas></div>
-      <div id="w-list"></div>
+    <div class="moi-tabs">
+      <button class="moi-tab on" onclick="moiTab('prog',this)">📈 Progression</button>
+      <button class="moi-tab" onclick="moiTab('corps',this)">🩺 Corps</button>
+      <button class="moi-tab" onclick="moiTab('regl',this)">⚙️ Réglages</button>
     </div>
 
-    <div class="slbl">Règles & protocole</div>
-    <div class="card">
-      <div class="irow">
-        <div style="flex:1"><div class="ilbl">Début des règles</div><input type="date" id="r-date"></div>
-        <button class="btn btn-lime" onclick="addRegles()" style="align-self:flex-end;flex-shrink:0">Enregistrer</button>
+    <!-- SOUS-ONGLET PROGRESSION -->
+    <div class="moi-section on" id="ms-prog">
+      <div id="bilan-section"></div>
+
+      <div class="slbl">Objectif poids</div>
+      <div class="card">
+        <div class="irow" style="margin-bottom:.5rem">
+          <div style="flex:1"><div class="ilbl">Mon objectif (kg)</div><input type="number" id="obj-in" step="0.1" min="40" max="200" placeholder="ex : 75"></div>
+          <button class="btn btn-lime" onclick="saveObj()" style="flex-shrink:0;align-self:flex-end">OK</button>
+        </div>
+        <div id="obj-display"></div>
       </div>
-      <div id="r-last" class="mu" style="margin-bottom:.6rem"></div>
-      <hr>
-      <div class="pd"><div class="pd-t">Jours 1–2 — Douleurs intenses</div><div class="pd-d">Repos total ou marche douce 15–20 min. Chaleur, hydratation++, magnésium. Zéro culpabilité.</div></div>
-      <div class="pd"><div class="pd-t">Jours 3–4 — Ça s'atténue</div><div class="pd-d">Yoga doux 20–30 min, stretching hanches, Just Dance léger. Évite abdos directs et impacts.</div></div>
-      <div class="pd"><div class="pd-t">Jours 5–7 — Reprise progressive</div><div class="pd-d">Salle à 70% : –1 série par exercice, –5 min de cardio. Écoute ton corps.</div></div>
-      <hr>
-      <div class="tip tip-pk">🩸 Fringales normales : +100–150 kcal autorisées. Magnésium contre les crampes. Fer : légumineuses, légumes verts, viande rouge 1–2×/sem.</div>
+
+      <div class="slbl">Courbe de poids</div>
+      <div class="card">
+        <div class="irow">
+          <div style="flex:1"><div class="ilbl">Kg</div><input type="number" id="w-in" step="0.1" min="40" max="200" placeholder="ex : 95.5"></div>
+          <div style="flex:1"><div class="ilbl">Date</div><input type="date" id="w-date"></div>
+          <button class="btn btn-lime" onclick="addWeight()" style="flex-shrink:0;align-self:flex-end">+</button>
+        </div>
+        <div id="prog-stats-row"></div>
+        <div class="chart-wrap"><canvas id="w-chart"></canvas></div>
+        <div id="w-list"></div>
+      </div>
+
+      <div class="slbl">Historique séances</div>
+      <div class="card"><div id="hist-list"><div class="empty"><div class="empty-i">🏋️</div>Aucune séance enregistrée.</div></div></div>
     </div>
 
-    <div class="slbl">Historique séances</div>
-    <div class="card"><div id="hist-list"><div class="empty"><div class="empty-i">🏋️</div>Aucune séance enregistrée.</div></div></div>
+    <!-- SOUS-ONGLET CORPS -->
+    <div class="moi-section" id="ms-corps">
+      <div class="slbl">Règles & protocole</div>
+      <div class="card">
+        <div class="irow">
+          <div style="flex:1"><div class="ilbl">Début des règles</div><input type="date" id="r-date"></div>
+          <button class="btn btn-lime" onclick="addRegles()" style="align-self:flex-end;flex-shrink:0">Enregistrer</button>
+        </div>
+        <div id="r-last" class="mu" style="margin-bottom:.6rem"></div>
+        <div id="regles-proto-actif"></div>
+        <hr>
+        <div class="pd"><div class="pd-t">Jours 1–2 — Douleurs intenses</div><div class="pd-d">Repos total ou marche douce 15–20 min. Chaleur, hydratation++, magnésium. Zéro culpabilité.</div></div>
+        <div class="pd"><div class="pd-t">Jours 3–4 — Ça s'atténue</div><div class="pd-d">Yoga doux 20–30 min, stretching hanches, Just Dance léger. Évite abdos directs et impacts.</div></div>
+        <div class="pd"><div class="pd-t">Jours 5–7 — Reprise progressive</div><div class="pd-d">Salle à 70% : –1 série par exercice, –5 min de cardio. Écoute ton corps.</div></div>
+        <hr>
+        <div class="tip tip-pk">🩸 Fringales normales : +100–150 kcal autorisées. Magnésium contre les crampes. Fer : légumineuses, légumes verts, viande rouge 1–2×/sem.</div>
+      </div>
 
-    <div class="slbl">Paramètres</div>
-    <div class="card">
-      <div class="mu" style="margin-bottom:.75rem;line-height:1.6">🔒 Données stockées uniquement sur cet appareil. Rien n'est transmis.</div>
-      <div class="ilbl">Changer le code PIN (4 chiffres)</div>
-      <div class="irow"><input type="number" id="new-pin" placeholder="Nouveau code" max="9999" min="0"><button class="btn btn-lime" onclick="changePin()" style="flex-shrink:0">OK</button></div>
-      <div id="pin-msg" class="mu"></div>
-      <hr>
-      <button class="btn btn-danger" style="width:100%;margin-top:.5rem" onclick="nukeData()">Effacer toutes les données</button>
+      <div class="slbl">Alerte médicale</div>
+      <div class="tip tip-am">⏳ Résultats insulino-résistance & hormones en attente — intensité modérée jusqu'à confirmation. Si IR confirmée, mettre à jour les conseils nutrition avec ton médecin.</div>
+    </div>
+
+    <!-- SOUS-ONGLET RÉGLAGES -->
+    <div class="moi-section" id="ms-regl">
+      <div class="slbl">Sécurité</div>
+      <div class="card">
+        <div class="mu" style="margin-bottom:.75rem;line-height:1.6">🔒 Données stockées uniquement sur cet appareil (localStorage). Rien n'est transmis sur internet.</div>
+        <div class="ilbl">Changer le code PIN (4 chiffres)</div>
+        <div class="irow"><input type="number" id="new-pin" placeholder="Nouveau code" max="9999" min="0"><button class="btn btn-lime" onclick="changePin()" style="flex-shrink:0">OK</button></div>
+        <div id="pin-msg" class="mu"></div>
+      </div>
+
+      <div class="slbl">Données</div>
+      <div class="card">
+        <button class="export-btn" onclick="exportData()">⬇️ Exporter mes données (JSON)</button>
+        <div style="margin-bottom:.5rem">
+          <div class="ilbl" style="margin-bottom:6px">Importer des données</div>
+          <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)">
+          <button class="export-btn" style="background:rgba(155,127,245,.1);border-color:rgba(155,127,245,.2);color:var(--pu-l)" onclick="document.getElementById('import-file').click()">⬆️ Importer depuis un fichier JSON</button>
+        </div>
+        <hr>
+        <button class="btn btn-danger" style="width:100%;margin-top:.5rem" onclick="nukeData()">Effacer toutes les données</button>
+      </div>
     </div>
   </div>
 
@@ -1134,9 +1276,9 @@ function tMeal(k,i){document.getElementById('mc-'+k+'-'+i).classList.toggle('ope
 
 // ══ PIN ══
 let pinBuf='';
-const getPin=()=>localStorage.getItem('is_pin')||'1234';
-const getData=()=>{try{return JSON.parse(localStorage.getItem('is_data')||'{}')}catch{return{}}};
-const setData=d=>{try{localStorage.setItem('is_data',JSON.stringify(d))}catch{}};
+const getPin=()=>localStorage.getItem('ie_pin')||'1234';
+const getData=()=>{try{return JSON.parse(localStorage.getItem('ie_data')||'{}')}catch{return{}}};
+const setData=d=>{try{localStorage.setItem('ie_data',JSON.stringify(d))}catch{}};
 
 function toast(msg,dur=2400){
   const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');
@@ -1168,7 +1310,7 @@ function lockApp(){document.getElementById('app').classList.remove('on');documen
 function changePin(){
   const v=document.getElementById('new-pin').value.trim();const m=document.getElementById('pin-msg');
   if(!/^\d{4}$/.test(v)){m.textContent='4 chiffres requis.';m.style.color='var(--rd)';return}
-  localStorage.setItem('is_pin',v);m.textContent='✅ Code changé !';m.style.color='var(--gr)';
+  localStorage.setItem('ie_pin',v);m.textContent='✅ Code changé !';m.style.color='var(--gr)';
   document.getElementById('new-pin').value='';
   setTimeout(()=>{m.textContent='';m.style.color=''},2500);
 }
@@ -1183,7 +1325,220 @@ function goNav(id,btn){
   document.getElementById('hdr-title').textContent=titles[id]||'';
   if(id==='prog'){renderWList('all-list',WS,false);}
   if(id==='nutri')renderMeals();
-  if(id==='moi'){renderWList2();renderWChart();renderHist();renderRL();}
+  if(id==='moi'){renderWList2();renderWChart();renderHist();renderRL();renderObjDisplay();renderProgStats();renderBilanMoi();}
+}
+
+// ══ SOUS-ONGLETS MOI ══
+function moiTab(id,btn){
+  document.querySelectorAll('.moi-tab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.moi-section').forEach(s=>s.classList.remove('on'));
+  document.getElementById('ms-'+id).classList.add('on');
+  if(id==='prog'){renderWList2();renderWChart();renderHist();renderObjDisplay();renderProgStats();renderBilanMoi();}
+  if(id==='corps'){renderRL();renderReglesProto();}
+}
+
+// ══ OBJECTIF POIDS ══
+function saveObj(){
+  const v=parseFloat(document.getElementById('obj-in').value);
+  if(isNaN(v)||v<40||v>200){toast('Valeur invalide');return;}
+  const d=getData();d.objectif=v;setData(d);
+  document.getElementById('obj-in').value='';
+  toast('🎯 Objectif enregistré');renderObjDisplay();renderProgStats();
+}
+
+function renderObjDisplay(){
+  const d=getData();const el=document.getElementById('obj-display');
+  if(!el)return;
+  const obj=d.objectif;
+  const poids=d.poids;
+  if(!obj){el.innerHTML='<div class="mu" style="padding:.3rem 0">Définis ton objectif pour suivre ta progression.</div>';return;}
+  if(!poids||!poids.length){el.innerHTML=`<div class="mu">Objectif : <strong style="color:var(--lime)">${obj} kg</strong> — entre ton premier poids pour voir la progression.</div>`;return;}
+  const first=poids[0].v;
+  const current=poids[poids.length-1].v;
+  const totalToLose=first-obj;
+  const lost=first-current;
+  const pct=totalToLose>0?Math.min(100,Math.round(lost/totalToLose*100)):0;
+  el.innerHTML=`
+    <div class="obj-bar-wrap">
+      <div class="obj-bar-labels">
+        <span>${first.toFixed(1)} kg</span>
+        <span style="color:var(--lime);font-weight:700">🎯 ${obj} kg</span>
+      </div>
+      <div class="obj-bar-track">
+        <div class="obj-bar-fill" style="width:${pct}%"></div>
+        <div class="obj-bar-marker" style="left:${pct}%"></div>
+      </div>
+      <div style="text-align:center;margin-top:6px;font-size:13px;color:var(--mu)">
+        <strong style="color:var(--lime)">${pct}%</strong> de l'objectif atteint · 
+        <strong style="color:var(--gr)">${Math.max(0,current-obj).toFixed(1)} kg</strong> restants
+      </div>
+    </div>`;
+}
+
+function renderProgStats(){
+  const d=getData();const el=document.getElementById('prog-stats-row');
+  if(!el)return;
+  const poids=d.poids;
+  if(!poids||poids.length<2){el.innerHTML='';return;}
+  const first=poids[0].v;const last=poids[poids.length-1].v;
+  const totalLost=first-last;
+  // Rythme mensuel basé sur la durée
+  const firstDate=new Date(poids[0].d);const lastDate=new Date(poids[poids.length-1].d);
+  const months=Math.max(0.5,(lastDate-firstDate)/(1000*60*60*24*30));
+  const rythme=totalLost/months;
+  // Séances totales
+  const totalSeances=(d.seances||[]).length;
+  el.innerHTML=`<div class="prog-stats">
+    <div class="pst"><div class="pst-val" style="color:var(--gr)">−${totalLost.toFixed(1)}</div><div class="pst-lbl">kg perdus</div></div>
+    <div class="pst"><div class="pst-val" style="color:var(--lime)">${rythme.toFixed(1)}</div><div class="pst-lbl">kg/mois</div></div>
+    <div class="pst"><div class="pst-val" style="color:var(--am)">${totalSeances}</div><div class="pst-lbl">séances</div></div>
+  </div>`;
+}
+
+// ══ BILAN SEMAINE ══
+function renderBilanToday(){
+  const el=document.getElementById('bilan-today-section');
+  if(!el)return;
+  const now=new Date();
+  const dayOfWeek=now.getDay(); // 0=dim
+  // Afficher le bilan le dimanche (0) ou sur la semaine si >2 séances
+  const d=getData();const wd=getWeekDates();
+  const sw=(d.seances||[]).filter(s=>wd.includes(s.date));
+  if(dayOfWeek!==0&&sw.length<2){el.innerHTML='';return;}
+  el.innerHTML=renderBilanHTML(sw,d,wd);
+}
+
+function renderBilanMoi(){
+  const el=document.getElementById('bilan-section');
+  if(!el)return;
+  const d=getData();const wd=getWeekDates();
+  const sw=(d.seances||[]).filter(s=>wd.includes(s.date));
+  el.innerHTML=renderBilanHTML(sw,d,wd);
+}
+
+function renderBilanHTML(sw,d,wd){
+  const poids=d.poids||[];
+  // Poids début de semaine
+  const poidsWeek=poids.filter(p=>wd.includes(p.d));
+  const poidsDebut=poidsWeek.length?poidsWeek[0].v:null;
+  const poidsFin=poids.length?poids[poids.length-1].v:null;
+  const diffPoids=poidsDebut&&poidsFin?(poidsFin-poidsDebut).toFixed(1):null;
+
+  // Message d'encouragement
+  let msg='';
+  if(sw.length===0) msg="Pas encore de séance cette semaine — c'est le moment de commencer ! 💪";
+  else if(sw.length===1) msg="1 séance, c'est un bon départ ! Vise 2 de plus cette semaine.";
+  else if(sw.length===2) msg='2 séances — tu es sur la bonne voie. Encore une et l\'objectif est atteint ! 🔥';
+  else if(sw.length>=3) msg='Objectif séances atteint cette semaine ! Tu assures vraiment. 🏆';
+
+  return`<div class="bilan-card">
+    <div class="bilan-title">📊 Bilan de la semaine</div>
+    <div class="bilan-subtitle">${new Date().toLocaleDateString('fr-FR',{day:'numeric',month:'long'})}</div>
+    <div class="bilan-row"><span class="bilan-label">Séances faites</span><span class="bilan-val" style="color:var(--lime)">${sw.length} / 3</span></div>
+    ${diffPoids!==null?`<div class="bilan-row"><span class="bilan-label">Poids cette semaine</span><span class="bilan-val" style="color:${parseFloat(diffPoids)<=0?'var(--gr)':'var(--rd)'}">${parseFloat(diffPoids)<=0?'▼':'▲'} ${Math.abs(diffPoids)} kg</span></div>`:''}
+    ${poidsFin?`<div class="bilan-row"><span class="bilan-label">Poids actuel</span><span class="bilan-val">${poidsFin.toFixed(1)} kg</span></div>`:''}
+    <div class="bilan-row"><span class="bilan-label">Total séances</span><span class="bilan-val" style="color:var(--am)">${(d.seances||[]).length}</span></div>
+    <div class="bilan-msg">${msg}</div>
+  </div>`;
+}
+
+// ══ CONSEIL NUTRITION CONTEXTUEL ══
+function renderNutriCtx(){
+  const el=document.getElementById('nutri-ctx-section');
+  if(!el)return;
+  const d=getData();const today=new Date().toISOString().split('T')[0];
+  const seanceAujourd=(d.seances||[]).some(s=>s.date===today);
+  const w=todaySug();
+  const isCardio=w.objectifs.includes('cardio')||w.objectifs.includes('calories');
+  const isRenfo=w.objectifs.includes('renfo');
+
+  // Règles check
+  const lastRegles=d.regles&&d.regles.length?d.regles[d.regles.length-1].d:null;
+  let isReglesActives=false;
+  let regleJour=0;
+  if(lastRegles){
+    const diff=Math.floor((new Date(today)-new Date(lastRegles))/(1000*60*60*24));
+    if(diff>=0&&diff<=7){isReglesActives=true;regleJour=diff+1;}
+  }
+
+  if(isReglesActives&&regleJour<=2){
+    el.innerHTML=`<div class="nutri-ctx">
+      <div class="nutri-ctx-title">🌸 Nutrition — Règles (Jour ${regleJour})</div>
+      <div class="nutri-ctx-item">🩸 <strong>Fer :</strong> légumineuses, épinards, viande rouge si besoin</div>
+      <div class="nutri-ctx-item">🍫 <strong>Magnésium :</strong> 2 carrés de chocolat 70%+, noix — contre les crampes</div>
+      <div class="nutri-ctx-item">💧 <strong>Hydratation :</strong> +500ml aujourd'hui</div>
+      <div class="nutri-ctx-item">⚡ <strong>Calories :</strong> +100–150 kcal autorisées — écoute tes fringales</div>
+    </div>`;
+    return;
+  }
+
+  if(seanceAujourd){
+    el.innerHTML=`<div class="nutri-ctx">
+      <div class="nutri-ctx-title">🥗 Nutrition — Jour de séance ✓</div>
+      <div class="nutri-ctx-item">⏰ <strong>Avant (1–2h) :</strong> glucides lents + protéine légère — patate douce, riz complet, banane</div>
+      <div class="nutri-ctx-item">💪 <strong>Après (dans les 2h) :</strong> protéine + glucide — poulet + riz, yaourt grec + fruit</div>
+      <div class="nutri-ctx-item">💧 <strong>Hydratation :</strong> 500ml avant, 200ml toutes les 15–20 min pendant, 500ml après</div>
+      ${isRenfo?'<div class="nutri-ctx-item">🥩 <strong>Objectif protéines aujourd\'hui :</strong> vise 110–120g — la récupération musculaire en dépend</div>':''}
+    </div>`;
+    return;
+  }
+
+  // Jour sans séance → conseil du jour basé sur la suggestion
+  el.innerHTML=`<div class="nutri-ctx">
+    <div class="nutri-ctx-title">🥗 Conseil nutrition du jour</div>
+    <div class="nutri-ctx-item">🌙 <strong>Soir :</strong> léger — poisson + légumes ou omelette. Féculents optionnels.</div>
+    <div class="nutri-ctx-item">🏃 <strong>Séance prévue demain ?</strong> Mange tes féculents aujourd'hui — refais les stocks de glycogène</div>
+    <div class="nutri-ctx-item">🥩 <strong>Protéines :</strong> ~100g aujourd'hui suffit — pas de surcharge les jours de repos</div>
+  </div>`;
+}
+
+// ══ PROTOCOLE RÈGLES ACTIF ══
+function renderReglesProto(){
+  const d=getData();const el=document.getElementById('regles-proto-actif');
+  if(!el)return;
+  const today=new Date().toISOString().split('T')[0];
+  const lastRegles=d.regles&&d.regles.length?d.regles[d.regles.length-1].d:null;
+  if(!lastRegles){el.innerHTML='';return;}
+  const diff=Math.floor((new Date(today)-new Date(lastRegles))/(1000*60*60*24));
+  if(diff<0||diff>7){el.innerHTML='';return;}
+  const jour=diff+1;
+  const phase=jour<=2?'Jours 1–2 — Repos et douceur':jour<=4?'Jours 3–4 — Reprise douce':'Jours 5–7 — Reprise progressive';
+  el.innerHTML=`<div class="tip tip-pk" style="margin-bottom:.75rem">
+    🌸 <strong>Aujourd'hui : Jour ${jour} de règles — ${phase}</strong>
+  </div>`;
+}
+
+// ══ EXPORT / IMPORT ══
+function exportData(){
+  const d=getData();
+  const blob=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  const date=new Date().toISOString().split('T')[0];
+  a.download='inshape_backup_'+date+'.json';
+  a.click();URL.revokeObjectURL(url);
+  toast('✅ Données exportées !');
+}
+
+function importData(event){
+  const file=event.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=(e)=>{
+    try{
+      const data=JSON.parse(e.target.result);
+      if(typeof data!=='object'||!data){throw new Error('Format invalide');}
+      if(confirm('Importer ces données ? Tes données actuelles seront remplacées.')){
+        setData(data);
+        toast('✅ Données importées !');
+        updateStats();
+        renderWList2();renderWChart();renderHist();renderRL();renderObjDisplay();renderProgStats();renderBilanMoi();
+      }
+    }catch(err){toast('❌ Fichier invalide');}
+    event.target.value='';
+  };
+  reader.readAsText(file);
 }
 
 // ══ PLATEAU ══
@@ -1196,15 +1551,65 @@ function togglePlateau(){
 
 // ══ HERO ══
 function todaySug(){
-  const d=getData();const wd=getWeekDates();
-  const n=wd.filter(dt=>(d.seances||[]).some(s=>s.date===dt)).length;
+  const d=getData(); const wd=getWeekDates(); const today=new Date().toISOString().split('T')[0];
+  const seancesWeek=(d.seances||[]).filter(s=>wd.includes(s.date));
+  const n=seancesWeek.length;
+  // IDs déjà faits cette semaine
+  const doneIds=new Set(seancesWeek.map(s=>s.id));
+  // Zones déjà travaillées cette semaine
+  const doneZones=new Set(seancesWeek.flatMap(s=>{ const w=WS.find(x=>x.id===s.id); return w?w.zones:[]; }));
+  // Lieux déjà faits cette semaine
+  const doneLieux=seancesWeek.map(s=>{ const w=WS.find(x=>x.id===s.id); return w?w.lieu:''; });
+  const salleCt=doneLieux.filter(l=>l==='salle').length;
+  const maisonCt=doneLieux.filter(l=>l==='maison').length;
+  // Dernière séance faite
   const lastId=(d.seances||[]).length?d.seances[d.seances.length-1].id:null;
-  const pool=WS.filter(w=>w.id!==lastId);
-  let f=n===0?pool.filter(w=>w.lieu==='salle'):
-         n===1?pool.filter(w=>w.lieu==='salle'||w.lieu==='maison'):
-         pool.filter(w=>w.lieu==='maison'||w.objectifs.includes('recup'));
-  if(!f||!f.length)f=pool;
-  return f[new Date().getDay()%f.length]||WS[0];
+  const lastW=WS.find(w=>w.id===lastId);
+  const lastZones=new Set(lastW?lastW.zones:[]);
+
+  let pool=WS.filter(w=>w.label!=='Express');
+
+  // Règle 1 : éviter la même séance que la dernière
+  pool=pool.filter(w=>w.id!==lastId);
+
+  // Règle 2 : logique lieu selon semaine
+  let lieuPool;
+  if(n===0){
+    lieuPool=pool.filter(w=>w.lieu==='salle');
+  } else if(salleCt>=2){
+    lieuPool=pool.filter(w=>w.lieu==='maison'||w.objectifs.includes('recup'));
+  } else if(maisonCt>=2){
+    lieuPool=pool.filter(w=>w.lieu==='salle');
+  } else {
+    lieuPool=pool;
+  }
+  if(!lieuPool.length) lieuPool=pool;
+
+  // Règle 3 : éviter les mêmes zones que la dernière séance
+  const freshZones=lieuPool.filter(w=>!w.zones.some(z=>lastZones.has(z)));
+  if(freshZones.length>0) lieuPool=freshZones;
+
+  // Règle 4 : si épuisement (3 séances), suggérer récup ou doux
+  if(n>=3){
+    const recupPool=lieuPool.filter(w=>w.objectifs.includes('recup')||w.objectifs.includes('souplesse'));
+    if(recupPool.length>0) lieuPool=recupPool;
+  }
+
+  // Déterministe basé sur le jour + hash léger pour varier
+  const seed=(new Date().getDay() + seancesWeek.length*3) % lieuPool.length;
+  return lieuPool[seed] || WS[0];
+}
+
+// Raison de la suggestion (pour affichage)
+function todaySugWhy(){
+  const d=getData(); const wd=getWeekDates();
+  const seancesWeek=(d.seances||[]).filter(s=>wd.includes(s.date));
+  const n=seancesWeek.length;
+  const salleCt=seancesWeek.filter(s=>{ const w=WS.find(x=>x.id===s.id); return w&&w.lieu==='salle'; }).length;
+  if(n===0) return 'Début de semaine — on commence par la salle 💪';
+  if(n>=3) return 'Tu as bien bossé — séance douce suggérée pour récupérer 🌿';
+  if(salleCt>=2) return 'Après 2x salle cette semaine — on varie avec une séance maison 🏠';
+  return 'Basé sur tes séances de la semaine — zone différente suggérée';
 }
 
 function renderHero(){
@@ -1213,7 +1618,8 @@ function renderHero(){
   const doneToday=(d.seances||[]).some(s=>s.date===today&&s.id===w.id);
   document.getElementById('hero-eye').textContent=w.label+' · '+w.objectifs.join(' / ');
   document.getElementById('hero-name').textContent=w.title;
-  document.getElementById('hero-sub').textContent='⏱ '+w.dur+' · Cardio : '+w.cardio;
+  document.getElementById('hero-sub').innerHTML='⏱ '+w.dur+' · Cardio : '+w.cardio+
+    '<div class="hero-why">💡 '+todaySugWhy()+'</div>';
   document.getElementById('hero-tags').innerHTML=
     `<span class="tag ${w.tc}">${w.label}</span>`+
     `<span class="tag tag-am">⏱ ${w.dur}</span>`+
@@ -1325,11 +1731,13 @@ function updateStats(){
   document.getElementById('plateau-toggle').classList.toggle('on',!!d.plateau);
   document.getElementById('plateau-section').style.display=d.plateau?'block':'none';
   renderHero();
+  renderNutriCtx();
+  renderBilanToday();
 }
 
 function nukeData(){
   if(confirm('Effacer toutes les données ? Irréversible.')){
-    localStorage.removeItem('is_data');toast('Données effacées');updateStats();
+    localStorage.removeItem('ie_data');toast('Données effacées');updateStats();
   }
 }
 
@@ -1339,6 +1747,9 @@ function initApp(){
   document.getElementById('w-date').value=now.toISOString().split('T')[0];
   document.getElementById('r-date').value=now.toISOString().split('T')[0];
   document.getElementById('motiv-txt').textContent=MOTIVS[now.getDay()%MOTIVS.length];
+  // Pré-remplir objectif si déjà enregistré
+  const d=getData();
+  if(d.objectif) document.getElementById('obj-in').value=d.objectif;
   updateStats();
 }
 </script>
